@@ -10,7 +10,7 @@ from DrissionPage import ChromiumPage, ChromiumOptions
 from DrissionPage.errors import PageDisconnectedError
 
 from .mitm import MITMProxy
-from .utils import get_free_port
+from .utils import get_free_port, get_browser_path
 from .bypasser import CloudflareBypasser
 from . import html as html_res
 
@@ -38,7 +38,7 @@ DEFAULT_ARGUMENTS = [
     "--lang=en",
 ]
 
-DEFAULT_BROWSER_PATH = os.getenv("CHROME_PATH", None)
+DEFAULT_BROWSER_PATH = os.getenv("CHROME_PATH", get_browser_path())
 DEFAULT_CERT_PATH = os.getenv("CERT_PATH", "~/.mitmproxy")
 
 class MITMAddon:
