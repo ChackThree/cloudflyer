@@ -36,6 +36,7 @@ DEFAULT_ARGUMENTS = [
     "--disable-sync",
     "--app=https://internals.cloudflyer.com/index",
     "--lang=en",
+    "--no-sandbox",
 ]
 
 DEFAULT_BROWSER_PATH = os.getenv("CHROME_PATH", get_browser_path())

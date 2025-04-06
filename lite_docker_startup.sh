@@ -72,25 +72,18 @@ if [ "$START_BY_ENV" = "true" ]; then
     CLIENT_KEY=${CLIENT_KEY:-"123456"}
     MAX_TASKS=${MAX_TASKS:-1}
     PORT=${PORT:-3000}
-    HOST=${HOST:-"localhost"}
+    HOST=${HOST:-"0.0.0.0"}
     TIMEOUT=${TIMEOUT:-120}
-    HEADLESS=${HEADLESS:-false}
     # Print environment variable values
     echo "CLIENT_KEY: $CLIENT_KEY"
     echo "MAX_TASKS: $MAX_TASKS"
     echo "PORT: $PORT"
     echo "HOST: $HOST"
     echo "TIMEOUT: $TIMEOUT"
-    echo "HEADLESS: $HEADLESS"
     # Start the service
     echo "Starting the service (using environment variables)..."
-    /app/venv/bin/python -m cloudflyer \
-        --clientKey "$CLIENT_KEY" \
-        --maxTasks "$MAX_TASKS" \
-        --port "$PORT" \
-        --host "$HOST" \
-        --timeout "$TIMEOUT" \
-        --headless "$HEADLESS"
+    echo "/app/venv/bin/python -m cloudflyer -K $CLIENT_KEY -M $MAX_TASKS -P $PORT -H $HOST -T $TIMEOUT"
+    /app/venv/bin/python -m cloudflyer -K $CLIENT_KEY -M $MAX_TASKS -P $PORT -H $HOST -T $TIMEOUT
 else
     # Start the service (using command line arguments)
     echo "Starting the service (using command line arguments)..."
